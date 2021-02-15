@@ -30,9 +30,9 @@
 		2535007525DA9F64000EB2B2 /* CKrecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKrecords.swift; sourceTree = "<group>"; };
 		2535007D25DAA5DD000EB2B2 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		2535008125DAA914000EB2B2 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
-		25ADC07825BA287000534968 /* Trails 411.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Trails 411.entitlements"; sourceTree = "<group>"; };
+		25ADC07825BA287000534968 /* Trails-411.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Trails-411.entitlements"; sourceTree = "<group>"; };
 		25ADC07A25BA288B00534968 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		25B9E59F259E73C20040F805 /* Trails 411.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trails 411.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		25B9E59F259E73C20040F805 /* Trails-411.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trails-411.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25B9E5A2259E73C20040F805 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25B9E5A4259E73C20040F805 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		25B9E5A9259E73C20040F805 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 		25B9E596259E73C20040F805 = {
 			isa = PBXGroup;
 			children = (
-				25B9E5A1259E73C20040F805 /* Trails 411 */,
+				25B9E5A1259E73C20040F805 /* Trails-411 */,
 				25B9E5A0259E73C20040F805 /* Products */,
 				F63771C7BD292A7C2A061E9D /* Pods */,
 				EF7E253E5FB9EC86821B4F72 /* Frameworks */,
@@ -75,12 +75,12 @@
 		25B9E5A0259E73C20040F805 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				25B9E59F259E73C20040F805 /* Trails 411.app */,
+				25B9E59F259E73C20040F805 /* Trails-411.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		25B9E5A1259E73C20040F805 /* Trails 411 */ = {
+		25B9E5A1259E73C20040F805 /* Trails-411 */ = {
 			isa = PBXGroup;
 			children = (
 				25B9E5A2259E73C20040F805 /* AppDelegate.swift */,
@@ -95,12 +95,12 @@
 				25B9E5A4259E73C20040F805 /* SceneDelegate.swift */,
 				25B9E5C5259E8DFF0040F805 /* TrailCell.swift */,
 				25B9E5F0259E96670040F805 /* TrailData.swift */,
-				25ADC07825BA287000534968 /* Trails 411.entitlements */,
+				25ADC07825BA287000534968 /* Trails-411.entitlements */,
 				25B9E5AB259E73C20040F805 /* Trails_411.xcdatamodeld */,
 				25B9E5BA259E88110040F805 /* TrailsVS.swift */,
 				2535007D25DAA5DD000EB2B2 /* Utilities.swift */,
 			);
-			path = "Trails 411";
+			path = "Trails-411";
 			sourceTree = "<group>";
 		};
 		EF7E253E5FB9EC86821B4F72 /* Frameworks */ = {
@@ -124,9 +124,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		25B9E59E259E73C20040F805 /* Trails 411 */ = {
+		25B9E59E259E73C20040F805 /* Trails-411 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 25B9E5B6259E73C30040F805 /* Build configuration list for PBXNativeTarget "Trails 411" */;
+			buildConfigurationList = 25B9E5B6259E73C30040F805 /* Build configuration list for PBXNativeTarget "Trails-411" */;
 			buildPhases = (
 				FC2966B1409B1C4082102B26 /* [CP] Check Pods Manifest.lock */,
 				25B9E59B259E73C20040F805 /* Sources */,
@@ -138,9 +138,9 @@
 			);
 			dependencies = (
 			);
-			name = "Trails 411";
+			name = "Trails-411";
 			productName = "Trails 411";
-			productReference = 25B9E59F259E73C20040F805 /* Trails 411.app */;
+			productReference = 25B9E59F259E73C20040F805 /* Trails-411.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -157,7 +157,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 25B9E59A259E73C20040F805 /* Build configuration list for PBXProject "Trails 411" */;
+			buildConfigurationList = 25B9E59A259E73C20040F805 /* Build configuration list for PBXProject "Trails-411" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -170,7 +170,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				25B9E59E259E73C20040F805 /* Trails 411 */,
+				25B9E59E259E73C20040F805 /* Trails-411 */,
 			);
 		};
 /* End PBXProject section */
@@ -393,10 +393,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Trails 411/Trails 411.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Trails-411/Trails-411.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 6ZKDZES4M7;
-				INFOPLIST_FILE = "Trails 411/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Trails-411/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -414,10 +415,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Trails 411/Trails 411.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Trails-411/Trails-411.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 6ZKDZES4M7;
-				INFOPLIST_FILE = "Trails 411/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Trails-411/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -432,7 +434,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		25B9E59A259E73C20040F805 /* Build configuration list for PBXProject "Trails 411" */ = {
+		25B9E59A259E73C20040F805 /* Build configuration list for PBXProject "Trails-411" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				25B9E5B4259E73C30040F805 /* Debug */,
@@ -441,7 +443,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		25B9E5B6259E73C30040F805 /* Build configuration list for PBXNativeTarget "Trails 411" */ = {
+		25B9E5B6259E73C30040F805 /* Build configuration list for PBXNativeTarget "Trails-411" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				25B9E5B7259E73C30040F805 /* Debug */,

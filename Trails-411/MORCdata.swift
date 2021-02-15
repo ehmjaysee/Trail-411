@@ -27,7 +27,8 @@ class MORCdataProvider
             guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
                 return
             }
-            if let data = data, let json = try? JSON(data) {
+            if let data = data {
+                let json = JSON(data)
                 self.parse(response: json)
             }
         }

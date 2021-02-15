@@ -45,6 +45,8 @@
 		25B9E5C5259E8DFF0040F805 /* TrailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailCell.swift; sourceTree = "<group>"; };
 		25B9E5F0259E96670040F805 /* TrailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailData.swift; sourceTree = "<group>"; };
 		25B9E5FE25A172CF0040F805 /* MORCdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MORCdata.swift; sourceTree = "<group>"; };
+		39C5A23D8181AC994F5F88F3 /* Pods-Trails-411.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trails-411.debug.xcconfig"; path = "Target Support Files/Pods-Trails-411/Pods-Trails-411.debug.xcconfig"; sourceTree = "<group>"; };
+		3B39704802FB08CBCB29DA53 /* Pods-Trails-411.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trails-411.release.xcconfig"; path = "Target Support Files/Pods-Trails-411/Pods-Trails-411.release.xcconfig"; sourceTree = "<group>"; };
 		66C0EB1C499CC3FE730C43AE /* Pods-Trails 411.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trails 411.release.xcconfig"; path = "Target Support Files/Pods-Trails 411/Pods-Trails 411.release.xcconfig"; sourceTree = "<group>"; };
 		F74BE03D00E3E65FFCAA16D8 /* Pods_Trails_411.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trails_411.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -117,6 +119,8 @@
 			children = (
 				16D54ABF71CFBE75CB338D40 /* Pods-Trails 411.debug.xcconfig */,
 				66C0EB1C499CC3FE730C43AE /* Pods-Trails 411.release.xcconfig */,
+				39C5A23D8181AC994F5F88F3 /* Pods-Trails-411.debug.xcconfig */,
+				3B39704802FB08CBCB29DA53 /* Pods-Trails-411.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -195,15 +199,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Trails 411/Pods-Trails 411-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Trails-411/Pods-Trails-411-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Trails 411/Pods-Trails 411-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Trails-411/Pods-Trails-411-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Trails 411/Pods-Trails 411-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Trails-411/Pods-Trails-411-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FC2966B1409B1C4082102B26 /* [CP] Check Pods Manifest.lock */ = {
@@ -221,7 +225,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Trails 411-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Trails-411-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -389,7 +393,7 @@
 		};
 		25B9E5B7259E73C30040F805 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 16D54ABF71CFBE75CB338D40 /* Pods-Trails 411.debug.xcconfig */;
+			baseConfigurationReference = 39C5A23D8181AC994F5F88F3 /* Pods-Trails-411.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -411,7 +415,7 @@
 		};
 		25B9E5B8259E73C30040F805 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 66C0EB1C499CC3FE730C43AE /* Pods-Trails 411.release.xcconfig */;
+			baseConfigurationReference = 3B39704802FB08CBCB29DA53 /* Pods-Trails-411.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

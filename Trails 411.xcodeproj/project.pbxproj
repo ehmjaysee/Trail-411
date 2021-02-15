@@ -3,29 +3,50 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2535007625DA9F64000EB2B2 /* CKrecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2535007525DA9F64000EB2B2 /* CKrecords.swift */; };
+		2535007E25DAA5DD000EB2B2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2535007D25DAA5DD000EB2B2 /* Utilities.swift */; };
+		2535008225DAA914000EB2B2 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2535008125DAA914000EB2B2 /* Globals.swift */; };
+		25ADC07B25BA288B00534968 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25ADC07A25BA288B00534968 /* CloudKit.framework */; };
 		25B9E5A3259E73C20040F805 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B9E5A2259E73C20040F805 /* AppDelegate.swift */; };
 		25B9E5A5259E73C20040F805 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B9E5A4259E73C20040F805 /* SceneDelegate.swift */; };
-		25B9E5A7259E73C20040F805 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B9E5A6259E73C20040F805 /* ViewController.swift */; };
 		25B9E5AA259E73C20040F805 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25B9E5A8259E73C20040F805 /* Main.storyboard */; };
 		25B9E5AD259E73C20040F805 /* Trails_411.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 25B9E5AB259E73C20040F805 /* Trails_411.xcdatamodeld */; };
 		25B9E5AF259E73C30040F805 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25B9E5AE259E73C30040F805 /* Assets.xcassets */; };
 		25B9E5B2259E73C30040F805 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25B9E5B0259E73C30040F805 /* LaunchScreen.storyboard */; };
+		25B9E5BB259E88110040F805 /* TrailsVS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B9E5BA259E88110040F805 /* TrailsVS.swift */; };
+		25B9E5BF259E88290040F805 /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B9E5BE259E88290040F805 /* RootVC.swift */; };
+		25B9E5C6259E8DFF0040F805 /* TrailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B9E5C5259E8DFF0040F805 /* TrailCell.swift */; };
+		25B9E5F1259E96670040F805 /* TrailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B9E5F0259E96670040F805 /* TrailData.swift */; };
+		25B9E5FF25A172CF0040F805 /* MORCdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B9E5FE25A172CF0040F805 /* MORCdata.swift */; };
+		C02C5F5B5B5D2A362DD39AE6 /* Pods_Trails_411.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74BE03D00E3E65FFCAA16D8 /* Pods_Trails_411.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		16D54ABF71CFBE75CB338D40 /* Pods-Trails 411.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trails 411.debug.xcconfig"; path = "Target Support Files/Pods-Trails 411/Pods-Trails 411.debug.xcconfig"; sourceTree = "<group>"; };
+		2535007525DA9F64000EB2B2 /* CKrecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKrecords.swift; sourceTree = "<group>"; };
+		2535007D25DAA5DD000EB2B2 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		2535008125DAA914000EB2B2 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		25ADC07825BA287000534968 /* Trails 411.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Trails 411.entitlements"; sourceTree = "<group>"; };
+		25ADC07A25BA288B00534968 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		25B9E59F259E73C20040F805 /* Trails 411.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trails 411.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25B9E5A2259E73C20040F805 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25B9E5A4259E73C20040F805 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		25B9E5A6259E73C20040F805 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		25B9E5A9259E73C20040F805 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		25B9E5AC259E73C20040F805 /* Trails_411.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Trails_411.xcdatamodel; sourceTree = "<group>"; };
 		25B9E5AE259E73C30040F805 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25B9E5B1259E73C30040F805 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25B9E5B3259E73C30040F805 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25B9E5BA259E88110040F805 /* TrailsVS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailsVS.swift; sourceTree = "<group>"; };
+		25B9E5BE259E88290040F805 /* RootVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
+		25B9E5C5259E8DFF0040F805 /* TrailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailCell.swift; sourceTree = "<group>"; };
+		25B9E5F0259E96670040F805 /* TrailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailData.swift; sourceTree = "<group>"; };
+		25B9E5FE25A172CF0040F805 /* MORCdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MORCdata.swift; sourceTree = "<group>"; };
+		66C0EB1C499CC3FE730C43AE /* Pods-Trails 411.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trails 411.release.xcconfig"; path = "Target Support Files/Pods-Trails 411/Pods-Trails 411.release.xcconfig"; sourceTree = "<group>"; };
+		F74BE03D00E3E65FFCAA16D8 /* Pods_Trails_411.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trails_411.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +54,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C02C5F5B5B5D2A362DD39AE6 /* Pods_Trails_411.framework in Frameworks */,
+				25ADC07B25BA288B00534968 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +67,8 @@
 			children = (
 				25B9E5A1259E73C20040F805 /* Trails 411 */,
 				25B9E5A0259E73C20040F805 /* Products */,
+				F63771C7BD292A7C2A061E9D /* Pods */,
+				EF7E253E5FB9EC86821B4F72 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,15 +84,41 @@
 			isa = PBXGroup;
 			children = (
 				25B9E5A2259E73C20040F805 /* AppDelegate.swift */,
-				25B9E5A4259E73C20040F805 /* SceneDelegate.swift */,
-				25B9E5A6259E73C20040F805 /* ViewController.swift */,
-				25B9E5A8259E73C20040F805 /* Main.storyboard */,
 				25B9E5AE259E73C30040F805 /* Assets.xcassets */,
-				25B9E5B0259E73C30040F805 /* LaunchScreen.storyboard */,
+				2535007525DA9F64000EB2B2 /* CKrecords.swift */,
 				25B9E5B3259E73C30040F805 /* Info.plist */,
+				25B9E5B0259E73C30040F805 /* LaunchScreen.storyboard */,
+				25B9E5A8259E73C20040F805 /* Main.storyboard */,
+				25B9E5FE25A172CF0040F805 /* MORCdata.swift */,
+				25B9E5BE259E88290040F805 /* RootVC.swift */,
+				2535008125DAA914000EB2B2 /* Globals.swift */,
+				25B9E5A4259E73C20040F805 /* SceneDelegate.swift */,
+				25B9E5C5259E8DFF0040F805 /* TrailCell.swift */,
+				25B9E5F0259E96670040F805 /* TrailData.swift */,
+				25ADC07825BA287000534968 /* Trails 411.entitlements */,
 				25B9E5AB259E73C20040F805 /* Trails_411.xcdatamodeld */,
+				25B9E5BA259E88110040F805 /* TrailsVS.swift */,
+				2535007D25DAA5DD000EB2B2 /* Utilities.swift */,
 			);
 			path = "Trails 411";
+			sourceTree = "<group>";
+		};
+		EF7E253E5FB9EC86821B4F72 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				25ADC07A25BA288B00534968 /* CloudKit.framework */,
+				F74BE03D00E3E65FFCAA16D8 /* Pods_Trails_411.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F63771C7BD292A7C2A061E9D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				16D54ABF71CFBE75CB338D40 /* Pods-Trails 411.debug.xcconfig */,
+				66C0EB1C499CC3FE730C43AE /* Pods-Trails 411.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +128,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 25B9E5B6259E73C30040F805 /* Build configuration list for PBXNativeTarget "Trails 411" */;
 			buildPhases = (
+				FC2966B1409B1C4082102B26 /* [CP] Check Pods Manifest.lock */,
 				25B9E59B259E73C20040F805 /* Sources */,
 				25B9E59C259E73C20040F805 /* Frameworks */,
 				25B9E59D259E73C20040F805 /* Resources */,
+				C2D9C451E88A4066589AFA8D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,14 +188,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C2D9C451E88A4066589AFA8D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Trails 411/Pods-Trails 411-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Trails 411/Pods-Trails 411-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Trails 411/Pods-Trails 411-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC2966B1409B1C4082102B26 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Trails 411-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		25B9E59B259E73C20040F805 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25B9E5A7259E73C20040F805 /* ViewController.swift in Sources */,
 				25B9E5A3259E73C20040F805 /* AppDelegate.swift in Sources */,
+				25B9E5F1259E96670040F805 /* TrailData.swift in Sources */,
 				25B9E5A5259E73C20040F805 /* SceneDelegate.swift in Sources */,
+				25B9E5C6259E8DFF0040F805 /* TrailCell.swift in Sources */,
+				2535007625DA9F64000EB2B2 /* CKrecords.swift in Sources */,
+				2535008225DAA914000EB2B2 /* Globals.swift in Sources */,
+				25B9E5FF25A172CF0040F805 /* MORCdata.swift in Sources */,
+				25B9E5BF259E88290040F805 /* RootVC.swift in Sources */,
+				25B9E5BB259E88110040F805 /* TrailsVS.swift in Sources */,
+				2535007E25DAA5DD000EB2B2 /* Utilities.swift in Sources */,
 				25B9E5AD259E73C20040F805 /* Trails_411.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,7 +322,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -275,7 +377,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -287,9 +389,11 @@
 		};
 		25B9E5B7259E73C30040F805 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16D54ABF71CFBE75CB338D40 /* Pods-Trails 411.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Trails 411/Trails 411.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6ZKDZES4M7;
 				INFOPLIST_FILE = "Trails 411/Info.plist";
@@ -306,9 +410,11 @@
 		};
 		25B9E5B8259E73C30040F805 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66C0EB1C499CC3FE730C43AE /* Pods-Trails 411.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Trails 411/Trails 411.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6ZKDZES4M7;
 				INFOPLIST_FILE = "Trails 411/Info.plist";

@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Trails 411.xcodeproj">
+      location = "group:/Users/mjc/xCode/Trails-411/Trails-411.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

@@ -58,6 +58,7 @@ class CKmanager
     
     // CloudKit
     let container = ckContainer
+    var ckStatus = CKAccountStatus.couldNotDetermine
     var notificationAuth: UNAuthorizationStatus?
     var subCount = 0
     var subCounter = 0
@@ -69,70 +70,86 @@ class CKmanager
 
     func start()
     {
+        NotificationCenter.default.addObserver(self, selector: #selector(ckAccountChanged), name: Notification.Name.CKAccountChanged, object: nil)
+
+        ckFetchStatus()
+        
         // Handle network connection status changes
         reachability?.whenReachable = { status in
             //self.databaseInit()
             //self.iCloudKVS_init()
         }
         try? reachability?.startNotifier()
-
     }
 
+    @objc private func ckAccountChanged() { ckFetchStatus() }
 
+    private func ckFetchStatus()
+    {
+        ckContainer.accountStatus { status, error in
+            if let error = error {
+                print("CK accountStatus " + error.localizedDescription)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                    self.ckFetchStatus()
+                }
+            } else {
+                // We received valid status. Cache it and send notification.
+                self.ckStatus = status
+            }
+        }
+    }
+
+    
     /////////////////////////////////////////////////////////////////////
     /// MARK: CloudKit Subscription Management
     /////////////////////////////////////////////////////////////////////
 
-    func checkSubscriptions()
+    func updateSubscriptions()
     {
-        // Subscriptions are versioned, meaning we will need to replace them if/when they are updated.
-        let ckSubVersion = iCloudKVS.longLong(forKey: Defaults.ckSubVersion)
-        
-        if (ckSubVersion != currentSubscriptionVersion) {
-            deletePrivateSubs()
+        for item in allTrails {
+            if (item.editSubscription == true) && (item.isSubscribed == false) {
+                createSubscription( trail: item )    // create new subscription
+            } else if item.isSubscribed && (item.editSubscription == false) {
+                // delete subscription
+                deleteSubscription( trail: item )
+            }
         }
     }
     
-    private func deletePrivateSubs()
+    private func createSubscription( trail: TrailData )
     {
-        print(#function)
-        
-        subCounter = 0
-        
-        container.privateCloudDatabase.fetchAllSubscriptions(completionHandler: {
-            subs, error in
+        let predicate = NSPredicate(format: "recordID = %@", CKRecord.ID(recordName: trail.id))
+        let subscription = CKQuerySubscription(recordType: "Trail", predicate: predicate, options: .firesOnRecordUpdate)
+        let info = CKSubscription.NotificationInfo()
+        info.alertLocalizationKey = "%1$@ is now %2$@"
+        info.alertLocalizationArgs = ["name", "status"]
+        info.soundName = "default"
+        subscription.notificationInfo = info
+
+        container.publicCloudDatabase.save(subscription) {
+            savedSubscription, error in
             if let error = error {
-                print("SUB FETCH ERROR " + error.localizedDescription)
-            } else if let subs = subs {
-                print("SUB FETCH \(subs.count)")
-                if (subs.count == 0) {
-                    self.deletePublicSubs()
-                } else {
-                    self.subCount = subs.count
-                    for item in subs {
-                        print("DELETE \(item.subscriptionID)")
-                        self.container.privateCloudDatabase.delete(withSubscriptionID: item.subscriptionID, completionHandler: {
-                            message, error in
-                            if let error = error {
-                                print("SUB DELETE ERROR " + error.localizedDescription)
-                            }
-                            if let msg = message {
-                                print("SUB DELETE MSG " + msg)
-                            }
-                            self.privateSubWasDeleted()
-                        })
-                    }
-                }
+                print(#function + error.localizedDescription)
+            } else {
+                print("Created sub for \(trail.name)")
             }
-        })
+            trail.subscriptionId = savedSubscription?.subscriptionID
+        }
     }
     
-    private func privateSubWasDeleted()
+    private func deleteSubscription( trail: TrailData )
     {
-        DispatchQueue.main.async {
-            self.subCounter += 1
-            if (self.subCounter == self.subCount) {
-                self.deletePublicSubs()
+        guard let id = trail.subscriptionId else { return }
+        
+        self.container.publicCloudDatabase.delete(withSubscriptionID: id) {
+            message, error in
+            if let error = error {
+                print("SUB DELETE ERROR " + error.localizedDescription)
+            } else {
+                trail.subscriptionId = nil
+            }
+            if let msg = message {
+                print("SUB DELETE MSG " + msg)
             }
         }
     }
@@ -188,9 +205,7 @@ class CKmanager
         subCounter = 0
         
         // Create subscriptions in the CloudKit database for this user. Only do this once per user.
-        // 1) "Customer" record create/delete/update
-        // 2) "CustomerBike" record create/delete/update
-        // 3) "LoggerData" record create/update
+        // Create one subscription for each trail the user wants to monitor.
 
         // 1) "Customer" record
         let info1 = CKSubscription.NotificationInfo()

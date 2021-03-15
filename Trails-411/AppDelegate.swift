@@ -7,17 +7,40 @@
 
 import UIKit
 import CoreData
+import UserNotifications
+
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate
+{
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
+    {
+        // Assign this class as the delegate for User Notifications
+        UNUserNotificationCenter.current().delegate = self
 
-
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // This app receives notifications from CloudKit when the DataLogger app updates records in the public database.
+        // Register early to receive these notifications becuase the app may have been launched due to a notification
+        // so we must be ready for it.
+        // NOTE: during testing it seemed that remote notifications would not be received unless we call
+        // requestAuthorization() prior to calling registerForRemoteNotifications() even if the user already
+        // gave permission to use notificaitons.
+        if (appDefaults.bool(forKey: Defaults.notificationAuth) == true) {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {
+                authorized, error in
+                if let error = error {
+                    print(error)
+                }
+                if authorized == true {
+                    DispatchQueue.main.async {
+                        UIApplication.shared.registerForRemoteNotifications()
+                    }
+                }
+            }
+        }
+        
         return true
     }
-
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -77,5 +100,78 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+} // class AppDelegate
+
+
+extension AppDelegate
+{
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("Function: \(#function), line: \(#line)")
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Function: \(#function), line: \(#line)")
+        print(error)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void)
+    {
+        NSLog(#function + " \(userInfo)")
+        
+        // Parse the userInfo dictionary and extract all the data fields we expect to receive for a CloudKit subscription notification
+        if let ckNotification = CKNotification(fromRemoteNotificationDictionary: userInfo)! as? CKQueryNotification,
+           let args = ckNotification.alertLocalizationArgs, args.count >= 2 {
+            let message = args[0] + " is now " + args[1]
+            scheduleNotification(message: message)
+        }
+
+        MORCdata.update()
+
+        // Wait a second for the processing to finish
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            completionHandler(UIBackgroundFetchResult.noData)
+        }
+    }
+        
+    private func scheduleNotification(message: String)
+    {
+        print(#function + message)
+        
+        let content = UNMutableNotificationContent()
+        content.title = message
+//        content.subtitle = message
+//        content.body = "body of messager"
+        content.sound = UNNotificationSound.default
+        // content.badge = 1
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false)
+        let identifier = UUID().uuidString
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if let error = error {
+                print("Error \(error.localizedDescription)")
+            }
+        }
+    }
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate
+{
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        // User tapped on a notification
+        print(#function)
+        DispatchQueue.main.async {
+            // navigate to the main UI
+            //debug
+        }
+        completionHandler()
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+    {
+        // Notification arrived while the app was in the foreground mode
+        print(#function)
+        completionHandler([.alert, .badge, .sound])
+    }
+    
 }
 

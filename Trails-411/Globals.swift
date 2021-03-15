@@ -8,11 +8,12 @@
 import Foundation
 
 
+let MetersPerMile                   = 1609.34   // convert miles to meters
+
+
 struct Defaults {
     static let notificationAuth = "notificationAuth"            // Flag set after user grants permission to use notifications
     static let ckSubVersion = "ckSubVersion"                    // verion number for cloudkit subscriptions
-
-    
 }
 
 // Notifications

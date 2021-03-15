@@ -16,15 +16,22 @@ class MORCdataProvider
 {
     static let shared = MORCdataProvider()
     private init() { }  // private ensures this class will be a singleton
-
+    var busy = false
+    
     func update()
     {
+        guard busy == false else { return }
+        busy = true
+        
         let url = URL(string: "https://api.morcmtb.org/v1/trails")!
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
+                print("MORC DATA \(error)")
+                self.busy = false
                 return
             }
             guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                self.busy = false
                 return
             }
             if let data = data {
@@ -38,17 +45,27 @@ class MORCdataProvider
     private func parse( response: JSON )
     {
         for trail in response.arrayValue {
-            guard let name = trail["trailName"].string, let id = trail["trailId"].string, let status = trail["trailStatus"].string else { continue }
+//            print("\n")
+//            print(trail)
+            guard let id = trail["trailId"].string, let status = trail["trailStatus"].string else { continue }
             if let index = allTrails.firstIndex(where: { $0.id == id }) {
                 allTrails[index].status = status
-            } else {
-                let data = TrailData(id: id, name: name, status: status, distance: 0.0, trailheads: [CLLocation]())
+            } else if let name = trail["trailName"].string, let desc = trail["description"].string, let date = trail["updatedAt"].int64,
+                      let lat_ = trail["latitude"].string, let lon_ = trail["longitude"].string,
+                      let lat = Double(lat_), let lon = Double(lon_) {
+                let seconds = (date / 1000)
+                let lastUpdate = Date(timeIntervalSince1970: TimeInterval(seconds))
+                let trailhead = CLLocation(latitude: lat, longitude: lon)
+                let data = TrailData(id: id, name: name, status: status, description: desc, lastUpdate: lastUpdate, trailhead: trailhead)
                 allTrails.append(data)
             }
         }
         NotificationCenter.default.post(name: Notif_TrailUpdate, object: nil)
+        busy = false
     }
-}
+    
+    
+} // MORCdataProvider
 
 
 

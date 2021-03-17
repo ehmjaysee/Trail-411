@@ -6,8 +6,10 @@ target 'Trails-411' do
   use_frameworks!
 
   # Pods for Trails 411
-  pod 'SwiftyJSON'
   pod 'Alamofire'
   pod 'ReachabilitySwift'
-
+  pod 'SwiftyJSON'
+#  pod 'TORoundedButton'
+  pod 'TORoundedButton', :path => '~/github/RoundedButton'
+  
 end

@@ -10,8 +10,6 @@ import CoreLocation
 import MapKit
 
 
-let Notification_Estimate = Notification.Name("estimate")
-
 
 var allTrails = [TrailData]()
 
@@ -25,6 +23,8 @@ class TrailData
     var travelTime: TimeInterval?
     var lastUpdate: Date
     var trailheads: [CLLocation]
+    
+    // COMPUTED PROPERTIES
     private var subKey: String {
         let key = id + "sub"
         return key
@@ -44,6 +44,18 @@ class TrailData
     var isOpen: Bool {
         return status.caseInsensitiveCompare("open") == .orderedSame
     }
+    var howOld: String {
+        let diff = Calendar.current.dateComponents([.day, .hour], from: lastUpdate, to: Date())
+        if let days = diff.day, days > 1 {
+            return String(days) + " days ago"
+        } else if let hours = diff.hour {
+            return String(hours) + " hours ago"
+        } else {
+            let shortDate = DateFormatter()
+            shortDate.dateStyle = .medium
+            return shortDate.string(from: lastUpdate)
+        }
+    }
 
     init( id: String, name: String, status: String, description: String, lastUpdate: Date, trailhead: CLLocation ) {
         self.id = id
@@ -53,7 +65,7 @@ class TrailData
         self.lastUpdate = lastUpdate
         self.trailheads = [trailhead]
         self.estimateTravelDistanceToRider()
-        NotificationCenter.default.addObserver(self, selector: #selector(locationStateChanged(notification:)), name: Notif_LocationState, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(locationUpdate(notification:)), name: Notif_LocationUpdate, object: nil)
     }
     
     private func estimateTravelDistanceToRider()
@@ -78,16 +90,15 @@ class TrailData
                 print("ETA \(response.expectedTravelTime)s \(response.distance)m")
                 self.travelTime = response.expectedTravelTime
                 self.distance = response.distance
-                NotificationCenter.default.post(name: Notification_Estimate, object: self.id)
+                NotificationCenter.default.post(name: Notif_TrailUpdate, object: self.id)
             }
         }
     }
 
-    @objc func locationStateChanged( notification: NSNotification )
+    @objc func locationUpdate( notification: NSNotification )
     {
-        if locationManager.locationState == .locked {
-            self.estimateTravelDistanceToRider()
-        }
+        // We get this notification when our location is determined for first time -AND- when it changes significantly
+        self.estimateTravelDistanceToRider()
     }
 }
 

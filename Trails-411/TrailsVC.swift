@@ -114,7 +114,12 @@ class TrailsVC: UIViewController
     @objc private func updateStatus() { MORCdata.update() }
     
     @objc func trailUpdate( notification: NSNotification ) {
-        DispatchQueue.main.async { self.refresh() }
+        if let id = notification.object as? String {
+            // a specific trail was updated
+        } else {
+            // the list of trails was updated
+            DispatchQueue.main.async { self.refresh() }
+        }
     }
     
     private func refresh()

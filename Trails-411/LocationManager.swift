@@ -12,6 +12,7 @@ import CoreLocation
 
 let locationManager = LocationManager.shared
 let Notif_LocationState         = Notification.Name("LocationState")
+let Notif_LocationUpdate        = Notification.Name("LocationUpdate")
 
 class LocationManager: NSObject, CLLocationManagerDelegate
 {
@@ -28,7 +29,12 @@ class LocationManager: NSObject, CLLocationManagerDelegate
     var hAccuracy = 0.0
     var vAccuracy = 0.0
     var timer: Timer?
-    var lastLockedLocation: CLLocation?
+    var lastLockedLocation: CLLocation? {
+        didSet {
+            NotificationCenter.default.post(name: Notif_LocationUpdate, object: nil)
+            print("LOCATION UPDATE")
+        }
+    }
     
     // Singleton
     static let shared = LocationManager()
@@ -91,13 +97,22 @@ class LocationManager: NSObject, CLLocationManagerDelegate
         // Now take just the most recent location value and update our state machine
         if let newLocation = locations.last
         {
-            lastLockedLocation = newLocation
             hAccuracy = newLocation.horizontalAccuracy
             vAccuracy = newLocation.verticalAccuracy
             let accuracy = (hAccuracy > 0.0) ? hAccuracy : 999.99
 
-            if (accuracy < 20.0) && (locationState == .authorized) {
-                locationState = .locked
+            if (accuracy < 20.0) {
+                // We have good accuracy
+                // Save this new location if significantly different from previous location
+                if lastLockedLocation == nil {
+                    lastLockedLocation = newLocation
+                } else if let oldLocation = lastLockedLocation, oldLocation.distance(from: newLocation) > 1000 {
+                    lastLockedLocation = newLocation
+                }
+                // Update our state
+                if locationState == .authorized {
+                    locationState = .locked
+                }
             } else if (accuracy >= 20.0) && (locationState == .locked) {
                 locationState = .authorized
             }

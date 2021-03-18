@@ -181,9 +181,9 @@ extension TrailsVC: UITableViewDelegate, UITableViewDataSource
         if let trailCell = cell as? TrailCell {
             trailCell.O_title.text = trail.name
             if trail.isOpen {
-                trailCell.O_icon.image = #imageLiteral(resourceName: "open-sign")
+                trailCell.O_icon.image = #imageLiteral(resourceName: "green-light-small")
             } else {
-                trailCell.O_icon.image = #imageLiteral(resourceName: "barrier")
+                trailCell.O_icon.image = #imageLiteral(resourceName: "red-light-small")
             }
         }
         return cell

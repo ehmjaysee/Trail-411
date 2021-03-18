@@ -101,7 +101,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate
             vAccuracy = newLocation.verticalAccuracy
             let accuracy = (hAccuracy > 0.0) ? hAccuracy : 999.99
 
-            if (accuracy < 20.0) {
+            if (accuracy < 100.0) {
                 // We have good accuracy
                 // Save this new location if significantly different from previous location
                 if lastLockedLocation == nil {

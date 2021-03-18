@@ -421,7 +421,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 39C5A23D8181AC994F5F88F3 /* Pods-Trails-411.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Trails-411/Trails-411.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -443,7 +443,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3B39704802FB08CBCB29DA53 /* Pods-Trails-411.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Trails-411/Trails-411.entitlements";
 				CODE_SIGN_STYLE = Automatic;

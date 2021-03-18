@@ -37,13 +37,13 @@ class TrailDetailVC: UIViewController
         O_description.text = trail.description
         
         // Update the map
-        if let user = locationManager.lastLockedLocation, let trailhead = trail.trailheads.first {
+        if let user = locationManager.lastLockedLocation {
             O_map.showsUserLocation = true
             if let annotation = PinObject(trail: trail) {
                 O_map.addAnnotation(annotation)
                 O_map.selectAnnotation(annotation, animated: true)
             }
-            let locations = [user, trailhead]
+            let locations = [user, trail.trailhead]
             centerMap(locations)
             O_map.isUserInteractionEnabled = false
         }
@@ -51,9 +51,7 @@ class TrailDetailVC: UIViewController
         // Update the directions button
         O_directions.text = ""
         O_directions.tappedHandler = { self.showDirections() }
-        if trail.trailheads.count == 0 {
-            O_directions.isEnabled = false
-        } else if let travelTime = trail.travelTime {
+        if let travelTime = trail.travelTime {
             let minutes = Int(travelTime / 60.0)
             let text = "Directions\n" + String(minutes) + " min"
             O_directions.attributedText = NSAttributedString(string: text)
@@ -67,17 +65,15 @@ class TrailDetailVC: UIViewController
     
     private func showDirections()
     {
-        guard let dest = trail.trailheads.first else { return }
-        
         // first try google maps
         if UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!) {
             //        "comgooglemaps://?daddr=48.8566,2.3522)&directionsmode=driving&zoom=14&views=traffic"
-            let urlString = "comgooglemaps://dir/?api=1&daddr=" + dest.coordinate.displayString + ")&directionsmode=driving&zoom=14&views=traffic&dir_action=navigate"
+            let urlString = "comgooglemaps://dir/?api=1&daddr=" + trail.trailhead.coordinate.displayString + ")&directionsmode=driving&zoom=14&views=traffic&dir_action=navigate"
             print(urlString)
             let url = URL(string: urlString)!
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {
-            let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: dest.coordinate, addressDictionary: nil))
+            let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: trail.trailhead.coordinate, addressDictionary: nil))
             mapItem.name = trail.name
             mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
         }
@@ -137,13 +133,9 @@ class PinObject: NSObject, MKAnnotation
 
     init?( trail: TrailData )
     {
-        if let trailhead = trail.trailheads.first {
-            coordinate = trailhead.coordinate
-            title = trail.name
-            subtitle = "Trailhead"
-        } else {
-            return nil
-        }
+        coordinate = trail.trailhead.coordinate
+        title = trail.name
+        subtitle = "Trailhead"
     }
 }
 

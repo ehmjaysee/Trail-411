@@ -194,16 +194,9 @@ extension TrailsVC: UITableViewDelegate, UITableViewDataSource
 
 //    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) { showSelected() }
     
-    /*
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if let rows = tableView.indexPathsForSelectedRows, rows.contains(indexPath) {
-            return 74
-        } else {
-            return 45
-        }
+        return 52
     }
-    */
-    
 
 }
 

@@ -23,6 +23,7 @@ class TrailData
     var travelTime: TimeInterval?
     var TrailForksPage: String?
     var MORCpage: String?
+    var trailMap: String?
     
     // COMPUTED PROPERTIES
     private var subKey: String {
@@ -73,13 +74,14 @@ class TrailData
         NotificationCenter.default.addObserver(self, selector: #selector(locationUpdate(notification:)), name: Notif_LocationUpdate, object: nil)
     }
     
-    init( name: String, id: String, lat: Double, lon: Double, TrailForks: String? = nil, MORC: String? = nil ) {
+    init( name: String, id: String, lat: Double, lon: Double, TrailForks: String? = nil, MORC: String? = nil, trailMap: String? = nil ) {
         self.id = id
         self.name = name
         self.trailhead = CLLocation(latitude: lat, longitude: lon)
         self.estimateTravelDistanceToRider()
         self.TrailForksPage = TrailForks
         self.MORCpage = MORC
+        self.trailMap = trailMap
         NotificationCenter.default.addObserver(self, selector: #selector(locationUpdate(notification:)), name: Notif_LocationUpdate, object: nil)
     }
     
@@ -118,47 +120,65 @@ class TrailData
 
 var allTrails: [TrailData] = [
     TrailData(name: "Battle Creek", id: "3b716fa1-af6b-4aa8-aff1-11ff473072d1", lat: 44.935152, lon: -93.028736,
-              TrailForks: "https://www.trailforks.com/region/battle-creek-5538/",
-              MORC: "https://www.mtbproject.com/trail/7053070/battle-creek-loop-from-lower-parking-lot" ),
+              TrailForks: "region/battle-creek-5538/",
+              MORC: "trail/7053070/battle-creek-loop-from-lower-parking-lot",
+              trailMap: "map-battle-creek"),
     TrailData(name: "Bertram Chain of Lakes", id: "2b741916-94ba-418e-b468-12bc0c14c2ff", lat: 45.283222, lon: -93.852944,
-              TrailForks: "https://www.trailforks.com/region/bertram-chain-of-lakes-13707/",
-              MORC: "https://www.mtbproject.com/trail/3505586/bertram-chain-of-lakes" ),
+              TrailForks: "region/bertram-chain-of-lakes-13707/",
+              MORC: "trail/3505586/bertram-chain-of-lakes",
+              trailMap: "map-bertram"),
     TrailData(name: "Carver Lake Park", id: "41ecd511-9274-45a0-957f-8cab16012e9f", lat: 44.90311699999999, lon: -92.979422,
-              TrailForks: "https://www.trailforks.com/region/carver-lake-park/",
-              MORC: "https://www.mtbproject.com/trail/3520161/carver-lake-park" ),
+              TrailForks: "region/carver-lake-park/",
+              MORC: "trail/3520161/carver-lake-park",
+              trailMap: "map-carver" ),
     TrailData(name: "Cottage Grove", id: "25e0fce0-9777-4623-9897-ae57fa2dcc39", lat: 44.844915, lon: -92.967131,
-              TrailForks:  "https://www.trailforks.com/skillpark/cottage-grove-bike-park/",
-              MORC: "http://www.morcmtb.org/cottage-grove-bike-park/"),
+              TrailForks:  "skillpark/cottage-grove-bike-park/",
+              MORC: "trail/7000927/cottage-grove-bike-park",
+              trailMap: "map-cottage-grove" ),
     TrailData(name: "Elm Creek", id: "d932e5fc-a4a4-4e33-820d-864556d0c0ec", lat: 45.068901, lon: -93.755282,
-              TrailForks: "https://www.trailforks.com/region/elm-creek-park/",
-              MORC: "https://www.mtbproject.com/trail/4403021/elm-creek-10-mile-ride" ),
+              TrailForks: "region/elm-creek-park/",
+              MORC: "trail/4403021/elm-creek-10-mile-ride",
+              trailMap: "map-elm-creek" ),
     TrailData(name: "Hillside Park", id: "ec5949d8-b11a-4b1c-a659-22fbf7577b64", lat: 45.299075, lon: -93.539913,
-              MORC: "https://www.mtbproject.com/trail/3680808/hillside" ),
+              MORC: "trail/3680808/hillside",
+              trailMap: "map-hillside" ),
     TrailData(name: "Lake Rebecca", id: "10e3fba6-063b-46af-a1af-22184be83cd1", lat: 45.068713, lon: -93.754863,
-              TrailForks: "https://www.trailforks.com/region/lake-rebecca-12004/",
-              MORC: "https://www.mtbproject.com/trail/7024093/lake-rebecca-loop"),
+              TrailForks: "region/lake-rebecca-12004/",
+              MORC: "trail/7024093/lake-rebecca-loop",
+              trailMap: "map-lake-rebecca" ),
     TrailData(name: "Lebanon Hills", id: "2cce9ec0-a0aa-41ca-9348-9849803fe7b3", lat: 44.7822821, lon: -93.1898107,
-              TrailForks: "https://www.trailforks.com/region/lebanon-hills/",
-              MORC: "https://www.mtbproject.com/trail/3794768/lebanon-hills-beginner-and-intermediate"),
+              TrailForks: "region/lebanon-hills/",
+              MORC: "trail/3794768/lebanon-hills-beginner-and-intermediate",
+              trailMap: "map-lebanon" ),
     TrailData(name: "Lone Lake Park", id: "31044f9c-d539-4b16-b22f-29ea0a288642", lat: 44.9, lon: -93.43,
-              TrailForks: "https://www.trailforks.com/region/lone-lake-park-42675/" ),
+              TrailForks: "region/lone-lake-park-42675/",
+              trailMap: "map-lone-lake" ),
     TrailData(name: "Minnesota River Bottoms", id: "ef3854d5-73b6-47c1-bf31-4efe21e4fee1", lat: 44.8021249, lon: -93.2898827,
-              TrailForks:  "https://www.trailforks.com/region/minnesota-river-trail-12006/",
-              MORC: "https://www.mtbproject.com/trail/7016269/minnesota-river-bottoms" ),
-    TrailData(name: "Monarch Singletrack", id: "dbef1a89-e0a9-46fb-94a6-4eb68b4aec0a", lat: 44.8779294, lon: -93.7192217 ),
+              TrailForks:  "region/minnesota-river-trail-12006/",
+              MORC: "trail/7016269/minnesota-river-bottoms",
+              trailMap: "map-mn-river-bottoms" ),
+    TrailData(name: "Monarch Singletrack", id: "dbef1a89-e0a9-46fb-94a6-4eb68b4aec0a", lat: 44.8779294, lon: -93.7192217,
+              TrailForks: "region/carver-park-reserve-41480/",
+              trailMap: "map-monarch" ),
     TrailData(name: "Murphy Hanrehan", id: "071c3aba-f614-4801-b447-c9ba215c6482", lat: 44.724282, lon: -93.348202,
-              TrailForks: "https://www.trailforks.com/region/murphyhanrehan-park/",
-              MORC: "https://www.mtbproject.com/trail/3522002/murphy-hanrehan"),
+              TrailForks: "region/murphyhanrehan-park/",
+              MORC: "trail/3522002/murphy-hanrehan",
+              trailMap: "map-murphy" ),
     TrailData(name: "Salem Hills", id: "1bfd110a-bc33-4024-a62f-cad5702fac81", lat: 44.865674, lon: -93.073265,
-              TrailForks: "https://www.trailforks.com/region/salem-hills-12008/",
-              MORC: "https://www.mtbproject.com/trail/7028094/salem-hills-mtn-bike-trail"),
-    TrailData(name: "Sunfish Lake Park", id: "ff41d044-a495-4a11-a9ed-b1e6265377e4", lat: 45.002523, lon: -92.903667),
+              TrailForks: "region/salem-hills-12008/",
+              MORC: "trail/7028094/salem-hills-mtn-bike-trail",
+              trailMap: "map-salem" ),
+    TrailData(name: "Sunfish Lake Park", id: "ff41d044-a495-4a11-a9ed-b1e6265377e4", lat: 45.002523, lon: -92.903667,
+              TrailForks: "region/sunfish-lake-park-34298/",
+              trailMap: "map-sunfish" ),
     TrailData(name: "Terrace Oaks", id: "07ade61a-4969-45f8-be64-fe8b135376de", lat: 44.7744386, lon: -93.2385644,
-              TrailForks: "https://www.trailforks.com/region/terrace-oaks-12011/",
-              MORC: "https://www.mtbproject.com/trail/4350735/terrace-oaks-trail"),
+              TrailForks: "region/terrace-oaks-12011/",
+              MORC: "trail/4350735/terrace-oaks-trail",
+              trailMap: "map-terrace"),
     TrailData(name: "Theodore Wirth", id: "4c82f3f0-9f45-4e16-a436-f490fbea81a4", lat: 44.990429, lon: -93.326324,
-              TrailForks: "https://www.trailforks.com/region/theodore-wirth-park/",
-              MORC: "https://www.mtbproject.com/trail/721506/north-loop")
+              TrailForks: "region/theodore-wirth-park/",
+              MORC: "trail/721506/north-loop",
+              trailMap: "map-theo")
     
 ]
 

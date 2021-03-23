@@ -165,11 +165,17 @@ func busyIndicator( _ title: String ) -> UIAlertController
     return alert
 }
 
-@discardableResult func doAlert(vc: UIViewController, title: String, message: String, handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController
+@discardableResult func doAlert(vc: UIViewController, title: String, message: String, fontSize: CGFloat? = nil, handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController
 {
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     let okAction = UIAlertAction(title: "OK", style: .default, handler: handler)
     alert.addAction(okAction)
+
+    if let fontSize = fontSize {
+        let messageFont = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)]
+        let messageAttrString = NSMutableAttributedString(string: message, attributes: messageFont)
+        alert.setValue(messageAttrString, forKey: "attributedMessage")
+    }
     vc.present(alert, animated: true, completion: nil)
     return alert
 }
@@ -401,4 +407,15 @@ extension CLLocationCoordinate2D {
     var displayString: String {
         return String(latitude) + "," + String(longitude)
     }
+}
+
+
+extension UIBarButtonItem
+{
+    func hide() {
+        tintColor = UIColor.clear
+    }
+//    func unhide() {
+//        tintColor = MItintColor
+//    }
 }

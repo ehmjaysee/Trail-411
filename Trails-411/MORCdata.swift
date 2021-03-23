@@ -58,17 +58,18 @@ class MORCdataProvider
             if let index = allTrails.firstIndex(where: { $0.id == id }) {
                 let seconds = (date / 1000)
                 let lastUpdate = Date(timeIntervalSince1970: TimeInterval(seconds))
-                allTrails[index].lastUpdate = lastUpdate
                 allTrails[index].status = status
+                allTrails[index].lastUpdate = lastUpdate
+                allTrails[index].description = trail["description"].string
             } else if let name = trail["trailName"].string, let date = trail["updatedAt"].int64,
                       let lat_ = trail["latitude"].string, let lon_ = trail["longitude"].string,
                       let lat = Double(lat_), let lon = Double(lon_) {
                 let seconds = (date / 1000)
                 let lastUpdate = Date(timeIntervalSince1970: TimeInterval(seconds))
                 let data = TrailData(name: name, id: id, lat: lat, lon: lon)
-                data.description = trail["description"].string
                 data.status = status
                 data.lastUpdate = lastUpdate
+                data.description = trail["description"].string
                 allTrails.append(data)
             }
         }

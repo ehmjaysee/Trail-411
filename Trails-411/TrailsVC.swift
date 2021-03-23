@@ -31,6 +31,8 @@ class TrailsVC: UIViewController
         refreshControl.addTarget(self, action: #selector(updateStatus), for: UIControl.Event.valueChanged)
         O_table.refreshControl = refreshControl
 
+        O_controls.hide()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(trailUpdate(notification:)), name: Notif_TrailUpdate, object: nil)
         
         MORCdata.update()       // get the latest trail status

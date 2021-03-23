@@ -8,16 +8,20 @@
 import UIKit
 import MapKit
 import TORoundedButton
+import SafariServices
 
 
 class TrailDetailVC: UIViewController
 {
     @IBOutlet weak var O_status: UILabel!
     @IBOutlet weak var O_image: UIImageView!
-    @IBOutlet weak var O_description: UITextView!
     @IBOutlet weak var O_map: MKMapView!
     @IBOutlet weak var O_directions: RoundedButton!
-    @IBOutlet weak var O_updated: UILabel!
+    @IBOutlet weak var O_trailMap: UIImageView!
+    @IBOutlet weak var O_updated: UIButton!
+    @IBOutlet weak var O_trailMaps: RoundedButton!
+    @IBOutlet weak var O_imagePageControl: UIPageControl!
+    
     
     
     var index: Int!     // set by presetner VC
@@ -27,14 +31,23 @@ class TrailDetailVC: UIViewController
     {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(trailUpdate(notification:)), name: Notif_TrailUpdate, object: nil)
+
         trail = allTrails[index]
 
         navigationItem.title = trail.name
 
         O_status.text = trail.status
-        O_updated.text = "Updated " + trail.howOld
+        O_updated.setTitle("Updated " + trail.howOld, for: .normal)
+
+        // Default trail photo
         O_image.image = UIImage(named: "splash-4")
-        O_description.text = trail.description
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(photoTapped(tapGestureRecognizer:)))
+        O_image.addGestureRecognizer(tapGestureRecognizer)
+
+//        O_description.text = trail.description
+//        let size = O_description.sizeThatFits(CGSize(width:O_description.bounds.width, height: CGFloat.greatestFiniteMagnitude))
+//        O_descriptionHeight.constant = size.height
         
         // Update the map
         if let user = locationManager.lastLockedLocation {
@@ -59,8 +72,62 @@ class TrailDetailVC: UIViewController
             O_directions.attributedText = NSAttributedString(string: "Directions")
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(trailUpdate(notification:)), name: Notif_TrailUpdate, object: nil)
+        // Trail Map Button & image
+        O_trailMaps.tappedHandler = { self.showMaps() }
+        if let file = trail.trailMap {
+            O_trailMap.image = UIImage(named: file)
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+            O_trailMap.addGestureRecognizer(tapGestureRecognizer)
+        }
+    }
 
+    @IBAction func A_updated(_ sender: Any) {
+        let message = "\n" + (trail.description ?? "There are no notes for this trail")
+        doAlert(vc: self, title: "Latest Update", message: message, fontSize: 17.0)
+    }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        showMaps()
+    }
+
+    @objc func photoTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PhotoBrowser")
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    private func showMaps()
+    {
+        var flag = false
+        
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        if let page = trail.TrailForksPage, let url = URL(string: "https://m.trailforks.com/" + page) {
+            flag = true
+            actionSheet.addAction(UIAlertAction(title: "Trail Forks", style: .default, handler: {
+                (alert:UIAlertAction!) -> Void in
+                let config = SFSafariViewController.Configuration()
+//                config.entersReaderIfAvailable = true
+                let vc = SFSafariViewController(url: url, configuration: config)
+                self.present(vc, animated: true)
+//                https://m.trailforks.com/
+//                https://www.trailforks.com/
+            }))
+        }
+        if let page = trail.MORCpage, let url = URL(string: "https://www.mtbproject.com/" + page) {
+            flag = true
+            actionSheet.addAction(UIAlertAction(title: "MTB Project", style: .default, handler: {
+                (alert:UIAlertAction!) -> Void in
+                let config = SFSafariViewController.Configuration()
+//                config.entersReaderIfAvailable = true
+                let vc = SFSafariViewController(url: url, configuration: config)
+                self.present(vc, animated: true)
+            }))
+        }
+        
+        if flag {
+            actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(actionSheet, animated: true, completion: nil)
+        }
     }
     
     private func showDirections()
@@ -79,9 +146,6 @@ class TrailDetailVC: UIViewController
         }
     }
     
-    
-    @IBAction func A_submitPhoto(_ sender: Any) {
-    }
     
     @objc func trailUpdate( notification: NSNotification ) {
         if let id = notification.object as? String, id == trail.id, let newData = allTrails.first(where: { $0.id == id }) {

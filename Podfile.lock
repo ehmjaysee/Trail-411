@@ -1,0 +1,31 @@
+PODS:
+  - Alamofire (5.4.1)
+  - ReachabilitySwift (5.0.0)
+  - SwiftyJSON (5.0.0)
+  - TORoundedButton (1.1.3)
+
+DEPENDENCIES:
+  - Alamofire
+  - ReachabilitySwift
+  - SwiftyJSON
+  - TORoundedButton (from `~/github/RoundedButton`)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - ReachabilitySwift
+    - SwiftyJSON
+
+EXTERNAL SOURCES:
+  TORoundedButton:
+    :path: "~/github/RoundedButton"
+
+SPEC CHECKSUMS:
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  TORoundedButton: 96001eec63bb1705e38aa6e3eae415024f544309
+
+PODFILE CHECKSUM: 76d37752fce53426164f2d2d539b1051550f7436
+
+COCOAPODS: 1.10.1

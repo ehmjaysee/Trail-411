@@ -38,6 +38,7 @@
 		2565EBBD25F6BFE300F65D74 /* TrailDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailDetailVC.swift; sourceTree = "<group>"; };
 		2565EBC025F6CDD200F65D74 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2565EBC425F729DB00F65D74 /* AcmeTools.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AcmeTools.gpx; sourceTree = "<group>"; };
+		2598064A260A785900550A1C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		259A10AE25FE723E00E55A39 /* NotificationsVS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVS.swift; sourceTree = "<group>"; };
 		25ADC07825BA287000534968 /* Trails-411.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Trails-411.entitlements"; sourceTree = "<group>"; };
 		25ADC07A25BA288B00534968 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -84,6 +85,7 @@
 		25B9E596259E73C20040F805 = {
 			isa = PBXGroup;
 			children = (
+				2598064A260A785900550A1C /* README.md */,
 				253500BB25DB2D99000EB2B2 /* Journal.md */,
 				2565EBC325F729C800F65D74 /* TestFiles */,
 				25B9E5A1259E73C20040F805 /* Trails-411 */,
